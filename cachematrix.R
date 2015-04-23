@@ -1,5 +1,6 @@
-## Calculate the inverse of a Matrix with cached results for better performance.
-## Use 'result_01' to receive the result and 'result_inv' to see cached result
+## This code calculates the inverse of a Matrix with cached results for better performance.
+## In the end of code we use 'result_01' to receive the result of makeCacheMatrix using some parameters
+## Run 'result_inv <- cacheSolve(result_01)' 2 times to see the cached result
 
 ## Create a Matrix and use Get and Set methods
 makeCacheMatrix <- function(x = matrix()) { 
@@ -33,5 +34,4 @@ cacheSolve <- function(x = matrix(), ...) {
 } 
 
 result_01 <- makeCacheMatrix(matrix(1:10, 2, 2))
-result_inv <- cacheSolve(result_01)
-result_inv <- cacheSolve(result_01)
+result_inv <- cacheSolve(result_01)  ## Run this line again to see the cached result
