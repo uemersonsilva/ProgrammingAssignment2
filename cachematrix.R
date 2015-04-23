@@ -1,15 +1,37 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Calculate the inverse of a Matrix with cached results for better performance.
+## Use 'result_01' to receive the result and 'result_inv' to see cached result
 
-## Write a short comment describing this function
+## Create a Matrix and use Get and Set methods
+makeCacheMatrix <- function(x = matrix()) { 
+        m <- NULL 
+		set <- function(y) { 
+		x <<- y 
+		m <<- NULL 
+        } 
+			get <- function() x 
+			setmatrix <- function(solve) m <<- solve 
+			getmatrix <- function() m 
+			list(set = set, get = get, 
+			setmatrix = setmatrix, 
+			getmatrix = getmatrix) 
+} 
 
-makeCacheMatrix <- function(x = matrix()) {
 
-}
+## cacheSolve find the inverse of a matrix and check if it is cached
+cacheSolve <- function(x = matrix(), ...) {
 
+        ## Return a matrix that is the inverse of 'x'        
+		m <- x$getmatrix() 
+		if(!is.null(m)) { 
+		message("Get cached data") 
+		return(m) 
+        } 
+			data <- x$get() 
+			m <- solve(data, ...) 
+			x$setmatrix(m) 
+			m 
+} 
 
-## Write a short comment describing this function
-
-cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
-}
+result_01 <- makeCacheMatrix(matrix(1:10, 2, 2))
+result_inv <- cacheSolve(result_01)
+result_inv <- cacheSolve(result_01)
